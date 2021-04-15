@@ -1,0 +1,39 @@
+{
+  "name": "sketchy-3d",
+  "version": "0.1.0",
+  "author": "Elijah Lucian",
+  "description": "A lightweight wrapper around three.js for creative coders",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dank-inc/sketchy-3d"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "index.js",
+  "license": "ISC",
+  "keywords": [
+    "typescript",
+    "webgl",
+    "threejs",
+    "creative coding",
+    "creative",
+    "genart",
+    "generative",
+    "datavis",
+    "vis"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.37",
+    "@types/three": "^0.127.1",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "@dank-inc/sketchy": "^0.14.1",
+    "postprocessing": "^6.21.3",
+    "three": "^0.127.0"
+  }
+}
