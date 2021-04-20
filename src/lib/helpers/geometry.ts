@@ -8,7 +8,7 @@ export const useGeometry = (type: GeoType, size: Vec3) => {
     case "sphere-buffer":
       return new THREE.SphereBufferGeometry(...size);
     case "box":
-      return new THREE.BoxGeometry();
+      return new THREE.BoxGeometry(...size);
 
     default:
       break;

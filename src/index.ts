@@ -1,5 +1,10 @@
-import * as THREE from "three";
-import { create3dSketch, createParams, load3dSketch, useGeometry } from "./lib";
+import {
+  create3dSketch,
+  createParams,
+  load3dSketch,
+  useGeometry,
+  useLight,
+} from "./lib";
 import { useAmbient, useMaterial, useMesh } from "./lib";
 
 const params = createParams({
@@ -10,12 +15,15 @@ const params = createParams({
 
 const sketch = create3dSketch(({ scene, camera }) => {
   scene.add(useAmbient());
-
-  const mesh = useMesh(useGeometry("box", [1, 1, 1]), useMaterial("basic"));
+  scene.add(useLight(0xffffff, 0.4, [-1, 1, -1]));
+  const mesh = useMesh(
+    useGeometry("box", [1, 1, 1]),
+    useMaterial("standard", 0x89cad0)
+  );
   scene.add(mesh);
 
-  return ({ time }) => {
-    mesh.rotation.z = time;
+  return ({ time, dt }) => {
+    mesh.rotation.y += dt;
     params.renderer.render(scene, camera);
   };
 });

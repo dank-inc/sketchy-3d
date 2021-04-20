@@ -27,14 +27,9 @@ export const createParams = (config: Sketchy3DConfig): Sketchy3DParams => {
   if (!context) throw new Error(`cannot initialize canvas`);
 
   const scene = new THREE.Scene();
-  // const camera = useCamera("perspective");
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-  );
+  const camera = useCamera("perspective");
 
+  camera.position.y = 2;
   camera.position.z = -5;
   camera.lookAt(new THREE.Vector3());
 
@@ -81,11 +76,17 @@ export const createParams = (config: Sketchy3DConfig): Sketchy3DParams => {
 
 export const load3dSketch = (sketch: Sketch, params: Sketchy3DParams) => {
   const frame = sketch(params);
+  let ot = +new Date();
 
   function animate() {
-    params.time += 0.01;
-
-    frame(params);
+    const now = +new Date();
+    const dt = (now - ot) / 1000;
+    params.time += dt;
+    ot = now;
+    frame({
+      ...params,
+      dt,
+    });
     requestAnimationFrame(animate);
   }
 
