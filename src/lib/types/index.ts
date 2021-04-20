@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { EffectsComposer } from "postprocessing";
+// import { EffectsComposer } from "postprocessing";
 import { SketchConfig, SketchParams } from "@dank-inc/sketchy";
 
 export type Frame = (params: Sketchy3DParams) => void;
@@ -16,7 +16,7 @@ export type Sketchy3DParams = SketchParams & {
   // THREE
   scene: THREE.Scene;
   camera: THREE.Camera;
-  composer: EffectsComposer;
+  // composer: EffectsComposer;
   renderer: THREE.Renderer;
   clock: THREE.Clock;
 

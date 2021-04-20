@@ -24,11 +24,13 @@
     "vis"
   ],
   "scripts": {
+    "start": "parcel src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",
     "@types/three": "^0.127.1",
+    "parcel": "*",
     "typescript": "^4.2.4"
   },
   "dependencies": {

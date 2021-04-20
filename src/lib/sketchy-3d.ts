@@ -2,7 +2,7 @@ import { Sketch, Sketchy3DParams, Sketchy3DConfig } from "./types";
 import THREE from "three";
 import { useCamera } from "./helpers/cam";
 import { sin, cos, lerp } from "@dank-inc/sketchy/lib/maff";
-import { EffectsComposer } from "postprocessing";
+// import { EffectsComposer } from "postprocessing";
 
 export const createParams = (config: Sketchy3DConfig): Sketchy3DParams => {
   // Split up creating canvas element and creating params
@@ -36,7 +36,7 @@ export const createParams = (config: Sketchy3DConfig): Sketchy3DParams => {
     renderer,
     scene,
     camera,
-    composer: new EffectsComposer(),
+    // composer: new EffectsComposer(),
 
     clock: new THREE.Clock(true),
     width: canvas.width,
