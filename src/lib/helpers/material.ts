@@ -1,7 +1,7 @@
-import THREE from "three";
+import * as THREE from "three";
 
 export const useMaterial = (
-  type: "standard",
+  type: "standard" | "basic",
   color: number | string = 0xffffff
 ) => {
   switch (type) {
@@ -9,6 +9,10 @@ export const useMaterial = (
       return new THREE.MeshStandardMaterial({
         color,
         flatShading: true,
+      });
+    case "basic":
+      return new THREE.MeshBasicMaterial({
+        color,
       });
     default:
       break;

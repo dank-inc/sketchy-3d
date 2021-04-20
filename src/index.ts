@@ -1,12 +1,23 @@
-import { create3dSketch, createParams } from "./lib";
+import * as THREE from "three";
+import { create3dSketch, createParams, load3dSketch, useGeometry } from "./lib";
+import { useAmbient, useMaterial, useMesh } from "./lib";
 
-createParams({
+const params = createParams({
+  containerId: "root",
   dimensions: [600, 600],
   animate: true,
 });
 
-create3dSketch((params) => {
-  console.log(params.context);
+const sketch = create3dSketch(({ scene, camera }) => {
+  scene.add(useAmbient());
 
-  return () => {};
+  const mesh = useMesh(useGeometry("box", [1, 1, 1]), useMaterial("basic"));
+  scene.add(mesh);
+
+  return ({ time }) => {
+    mesh.rotation.z = time;
+    params.renderer.render(scene, camera);
+  };
 });
+
+load3dSketch(sketch, params);
