@@ -1,4 +1,4 @@
-import * as THREE from "three";
+import THREE from "three";
 // import { EffectsComposer } from "postprocessing";
 import { SketchConfig, SketchParams } from "@dank-inc/sketchy";
 
