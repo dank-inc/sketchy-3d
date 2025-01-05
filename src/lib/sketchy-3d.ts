@@ -26,8 +26,8 @@ export const createParams = (config: Sketchy3DConfig): Sketchy3DParams => {
 
   const scene = new THREE.Scene()
   const camera = useCamera('perspective', width / height)
-  camera.position.y = 2
-  camera.position.z = -5
+  camera.position.y = 1.5
+  camera.position.z = -6
   camera.lookAt(new THREE.Vector3())
   scene.add(camera)
   const renderer = new THREE.WebGLRenderer()
@@ -38,6 +38,8 @@ export const createParams = (config: Sketchy3DConfig): Sketchy3DParams => {
   if (config.background) {
     const [color, alpha = 1] = config.background
     renderer.setClearColor(color, alpha)
+  } else {
+    renderer.setClearColor(0x000000, 0)
   }
 
   return {
@@ -69,7 +71,7 @@ export const createParams = (config: Sketchy3DConfig): Sketchy3DParams => {
   }
 }
 
-export const load3dSketch = (sketch: Sketch, params: Sketchy3DParams) => {
+export const start3dSketch = (sketch: Sketch, params: Sketchy3DParams) => {
   const frame = sketch(params)
   let ot = +new Date()
 
@@ -78,6 +80,7 @@ export const load3dSketch = (sketch: Sketch, params: Sketchy3DParams) => {
     const dt = (now - ot) / 1000
     params.time += dt
     ot = now
+
     frame({
       ...params,
       dt,

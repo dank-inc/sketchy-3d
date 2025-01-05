@@ -1,4 +1,4 @@
-export { createParams, create3dSketch, load3dSketch } from './sketchy-3d'
+export { createParams, create3dSketch, start3dSketch } from './sketchy-3d'
 
 export {
   useBasicMaterial,

@@ -1,13 +1,13 @@
 import {
   create3dSketch,
   createParams,
-  load3dSketch,
   useLight,
   useMesh,
   useStandardMaterial,
   useBox,
   useAmbient,
-} from '../src/lib'
+  start3dSketch,
+} from '@/lib'
 
 import { SuperMouse } from '@dank-inc/super-mouse'
 
@@ -15,11 +15,14 @@ const params = createParams({
   element: document.getElementById('root')!,
   // dimensions: [600, 600],
   animate: true,
+  data: {
+    clicked: false,
+  },
   // background: [0xffffff, 0],
 })
 
 const sketch = create3dSketch(
-  ({ scene, camera, renderer, PI, TAU, container, sin, cos }) => {
+  ({ scene, camera, renderer, PI, TAU, container, sin, cos, data }) => {
     const ambient = useAmbient(0xffffff, 0)
     scene.add(ambient)
 
@@ -37,6 +40,8 @@ const sketch = create3dSketch(
     mouse.onScroll = ({ deltaY }) => {
       box.rotation.y -= deltaY
     }
+
+    data.clicked = false
 
     return ({ time, dt }) => {
       // box.rotation.y += dt * 0.5
@@ -66,4 +71,4 @@ const sketch = create3dSketch(
   },
 )
 
-load3dSketch(sketch, params)
+start3dSketch(sketch, params)
