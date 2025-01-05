@@ -1,5 +1,7 @@
 # Sketchy3D
 
+[![npm version](https://badge.fury.io/js/@dank-inc%2Fsketchy-3d.svg)](https://badge.fury.io/js/@dank-inc%2Fsketchy-3d)
+
 [live demo](https://sketchy-3d.elijahlucian.ca/)
 
 A threejs typescript wrapper built around @dank-inc/sketchy!
