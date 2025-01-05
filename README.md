@@ -1,6 +1,6 @@
 # Sketchy3D
 
-[live demo](https://dank-inc.github.io/sketchy-3d/demo/)
+[live demo](https://sketchy-3d.elijahlucian.ca/)
 
 A threejs typescript wrapper built around @dank-inc/sketchy!
 
