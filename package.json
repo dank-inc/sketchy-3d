@@ -2,10 +2,10 @@
   "name": "@dank-inc/sketchy-3d",
   "version": "0.3.0",
   "author": "Elijah Lucian",
-  "description": "A lightweight wrapper around three.js for creative coders", 
+  "description": "A lightweight wrapper around three.js for creative coders",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dank-inc/sketchy-3d"
+    "url": "https://github.com/dank-inc/sketchy-3d.git"
   },
   "files": [
     "lib"
@@ -28,7 +28,7 @@
     "build": "vite build",
     "lint": "tsc --noEmit",
     "clean": "rm -rf lib",
-    "deploy": "npm run build && tsc && npm publish"
+    "deploy": "npm run build && tsc && npm publish --access public"
   },
   "devDependencies": {
     "@dank-inc/banger": "^0.14.1",
