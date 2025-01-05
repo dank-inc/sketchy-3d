@@ -15,7 +15,7 @@ const params = createParams({
   element: document.getElementById('root')!,
   // dimensions: [600, 600],
   animate: true,
-  // background: [0xffffff, 0],
+  background: [0x000000, 1],
 })
 
 const sketch = create3dSketch(

@@ -13,5 +13,32 @@
   <body>
     <div id="root"></div>
     <script type="module" src="index.ts"></script>
+    <div id="dank-inc-demo-panel" data-color="#e313e3">
+      <div class="header">
+        <h1>@dank-inc/sketchy-3d</h1>
+        <div class="controls">
+          <input type="checkbox" id="hidden" />
+          <label for="hidden">hide panel</label>
+        </div>
+      </div>
+      <div class="content"></div>
+      <div class="footer">
+        <p>
+          <a target="_blank" href="https://github.com/dank-inc/sketchy-3d"
+            >GitHub</a
+          >
+        </p>
+      </div>
+    </div>
+    <script>
+      const hidden = document.getElementById('hidden')
+
+      const panel = document.getElementById('dank-inc-demo-panel')
+      panel.style.setProperty('--color', panel.dataset.color)
+
+      hidden.addEventListener('change', (e) => {
+        panel.classList.toggle('hidden', e.target.checked)
+      })
+    </script>
   </body>
 </html>
