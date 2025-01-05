@@ -1,20 +1,16 @@
-import * as THREE from 'three'
+import { BoxGeometry, CircleGeometry, SphereGeometry } from 'three'
 import { Vec3 } from '../types/common'
 
 export type GeoType = 'sphere-buffer' | 'box'
 
-export const useGeometry = (type: GeoType, size: Vec3) => {
-  switch (type) {
-    case 'sphere-buffer':
-      return new THREE.SphereBufferGeometry(...size)
-    case 'box':
-      return new THREE.BoxGeometry(...size)
+export const useBox = (size: Vec3) => {
+  return new BoxGeometry(...size)
+}
 
-    default:
-      break
-  }
+export const useSphere = (size: Vec3) => {
+  return new SphereGeometry(...size)
 }
 
 export const useCircle = (rad = 5, segments = 32) => {
-  return new THREE.CircleGeometry(rad, segments)
+  return new CircleGeometry(rad, segments)
 }

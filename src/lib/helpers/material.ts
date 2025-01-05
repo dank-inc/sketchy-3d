@@ -1,29 +1,28 @@
-import * as THREE from 'three'
+import {
+  Color,
+  MeshBasicMaterial,
+  MeshStandardMaterial,
+  ShaderMaterial,
+} from 'three'
 
-export const useMaterial = (
-  type: 'standard' | 'basic',
-  color: number | string = 0xffffff,
-) => {
-  switch (type) {
-    case 'standard':
-      return new THREE.MeshStandardMaterial({
-        color,
-        flatShading: true,
-      })
-    case 'basic':
-      return new THREE.MeshBasicMaterial({
-        color,
-      })
-    default:
-      break
-  }
+export const useBasicMaterial = (color: number | string = 0xffffff) => {
+  return new MeshBasicMaterial({
+    color,
+  })
 }
 
-type Uniform = [key: string, value: number | THREE.Color]
+export const useStandardMaterial = (color: number | string = 0xffffff) => {
+  return new MeshStandardMaterial({
+    color,
+    flatShading: true,
+  })
+}
+
+type Uniform = [key: string, value: number | Color]
 
 const mapUniforms = (uniforms?: Uniform[]) => {
   if (!uniforms) return
-  const result: Record<string, { value: number | THREE.Color | string }> = {}
+  const result: Record<string, { value: number | Color | string }> = {}
   for (const [key, value] of uniforms) {
     result[key] = { value }
   }
@@ -38,8 +37,8 @@ type ShaderParams = {
 export const useShader = (
   { frag, vert }: ShaderParams,
   uniforms?: Uniform[],
-): THREE.ShaderMaterial => {
-  return new THREE.ShaderMaterial({
+): ShaderMaterial => {
+  return new ShaderMaterial({
     fragmentShader: frag,
     vertexShader: vert,
     uniforms: mapUniforms(uniforms),

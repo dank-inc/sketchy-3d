@@ -2,11 +2,11 @@ import { Vector3 } from 'three'
 import {
   create3dSketch,
   useAmbient,
-  useGeometry,
   useLight,
   useShader,
   useShaderMesh,
 } from '@/lib'
+import { useBox } from '@/lib/helpers/geometry'
 
 export default create3dSketch(({ scene, camera, renderer }) => {
   scene.add(useAmbient())
@@ -22,7 +22,7 @@ export default create3dSketch(({ scene, camera, renderer }) => {
   const s = 6
 
   const mesh = useShaderMesh(
-    useGeometry('box', [s, s, s]),
+    useBox([s, s, s]),
     useShader({ frag, vert }, [['time', 0]]),
   )
   scene.add(mesh)

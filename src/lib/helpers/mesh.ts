@@ -1,11 +1,7 @@
-import * as THREE from 'three'
+import { BufferGeometry, Material, Mesh, ShaderMaterial } from 'three'
 
-export const useMesh = <M extends THREE.Material>(
-  geo: THREE.BufferGeometry,
-  material: M,
-) => new THREE.Mesh<THREE.BufferGeometry, M>(geo, material)
+export const useMesh = <M extends Material>(geo: BufferGeometry, material: M) =>
+  new Mesh<BufferGeometry, M>(geo, material)
 
-export const useShaderMesh = (
-  geo: THREE.BufferGeometry,
-  material: THREE.ShaderMaterial,
-) => new THREE.Mesh<THREE.BufferGeometry, THREE.ShaderMaterial>(geo, material)
+export const useShaderMesh = (geo: BufferGeometry, material: ShaderMaterial) =>
+  new Mesh<BufferGeometry, ShaderMaterial>(geo, material)
