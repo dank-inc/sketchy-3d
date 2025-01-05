@@ -34,7 +34,7 @@
     "@dank-inc/banger": "^0.14.1",
     "@dank-inc/lewps": "^1.0.0",
     "@dank-inc/numbaz": "^0.5.1",
-    "@dank-inc/super-mouse": "^0.10.0",
+    "@dank-inc/super-mouse": "^0.10.2",
     "@types/node": "^22.10.5",
     "@types/three": "^0.171.0",
     "typescript": "^5.7.2",

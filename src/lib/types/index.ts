@@ -1,6 +1,6 @@
-import THREE from 'three'
 import { SketchConfig } from '@dank-inc/sketchy'
 import { Lerpr, Scaler, SinCosFn } from '@dank-inc/sketchy/lib/maff'
+import { Camera, Clock, Renderer, Scene } from 'three'
 
 export type Frame = (params: Sketchy3DParams) => void
 export type Sketch = (params: Sketchy3DParams) => Frame
@@ -29,11 +29,11 @@ export type Sketchy3DParams = {
   lerp: Lerpr
 
   // THREE
-  scene: THREE.Scene
-  camera: THREE.Camera
+  scene: Scene
+  camera: Camera
   // composer: EffectsComposer;
-  renderer: THREE.Renderer
-  clock: THREE.Clock
+  renderer: Renderer
+  clock: Clock
 
   // helporz
 }
