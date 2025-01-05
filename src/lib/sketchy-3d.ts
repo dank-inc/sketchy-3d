@@ -2,7 +2,6 @@ import { Sketch, Sketchy3DParams, Sketchy3DConfig } from './types'
 import * as THREE from 'three'
 import { useCamera } from './helpers/cam'
 import { sin, cos, lerp } from '@dank-inc/sketchy/lib/maff'
-// import { EffectsComposer } from "postprocessing";
 
 export const createParams = (config: Sketchy3DConfig): Sketchy3DParams => {
   // Split up creating canvas element and creating params
@@ -50,12 +49,12 @@ export const createParams = (config: Sketchy3DConfig): Sketchy3DParams => {
     clock: new THREE.Clock(true),
     width: canvas.width,
     height: canvas.height,
-    animated: config.animate,
+    animated: !!config.animate,
     context,
 
     time: config.timeOffset || 0,
     dt: 0,
-    startTime: +new Date(),
+    startTime: performance.now(),
 
     TAU: Math.PI * 2,
     PI: Math.PI,

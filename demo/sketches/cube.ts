@@ -1,4 +1,3 @@
-import glslify from 'glslify'
 import { Vector3 } from 'three'
 import {
   create3dSketch,
@@ -7,8 +6,7 @@ import {
   useLight,
   useShader,
   useShaderMesh,
-} from '../lib'
-// import { frag, vert } from './shaders/cube'
+} from '@/lib'
 
 export default create3dSketch(({ scene, camera, renderer }) => {
   scene.add(useAmbient())
