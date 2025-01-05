@@ -11,6 +11,7 @@ export type Sketchy3DConfig = SketchConfig & {
 
 export type Sketchy3DParams = {
   // Context
+  container: HTMLElement
   context: WebGLRenderingContext
   width: number
   height: number

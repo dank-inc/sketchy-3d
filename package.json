@@ -1,6 +1,6 @@
 {
   "name": "@dank-inc/sketchy-3d",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": "Elijah Lucian",
   "description": "A lightweight wrapper around three.js for creative coders",
   "repository": {
@@ -29,7 +29,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@dank-inc/banger": "^0.14.1",
     "@dank-inc/lewps": "^1.0.0",
+    "@dank-inc/numbaz": "^0.5.1",
+    "@dank-inc/super-mouse": "^0.10.0",
     "@types/node": "^22.10.5",
     "@types/three": "^0.171.0",
     "typescript": "^5.7.2",

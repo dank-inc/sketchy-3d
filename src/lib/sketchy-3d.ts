@@ -41,6 +41,7 @@ export const createParams = (config: Sketchy3DConfig): Sketchy3DParams => {
   }
 
   return {
+    container: rootElement,
     renderer,
     scene,
     camera,
