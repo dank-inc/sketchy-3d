@@ -11,10 +11,6 @@ import {
   OrthographicCameraBounds,
 } from '../src/lib'
 
-import { mapXY } from '@dank-inc/lewps'
-import { hsl } from '@dank-inc/sketchy/lib/helpers/color'
-import {} from '@dank-inc/numbaz'
-
 import { SuperMouse } from '@dank-inc/super-mouse'
 
 const params = createParams({
@@ -69,26 +65,9 @@ const sketch = create3dSketch(
       box.rotation.x += PI * 0.25
     }
 
-    const cubes = mapXY(10, 10, (u, v) => {
-      const cube = useMesh(
-        useBox([1, 1, 1]),
-        useStandardMaterial(hsl(u, 1, 0.5)),
-      )
-
-      const x = u * (bounds[1] - bounds[0]) + bounds[0]
-      const z = v * (bounds[3] - bounds[2]) + bounds[2]
-      cube.position.set(x, 0, z)
-      scene.add(cube)
-      return cube
-    })
-
     return ({ time, dt }) => {
       box.rotation.y += dt * 0.5
       box.position.y = 1 + Math.sin(time) * 1
-
-      cubes.forEach((cube) => {
-        cube.rotation.y += dt * 0.5
-      })
 
       box.rotation.y += mouse.scrollInertia * 0.0001
       box.rotation.y += dt
