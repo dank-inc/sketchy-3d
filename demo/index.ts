@@ -9,7 +9,7 @@ import {
   start3dSketch,
   useOrthographicCamera,
   OrthographicCameraBounds,
-} from '@/lib'
+} from '../src/lib'
 
 import { mapXY } from '@dank-inc/lewps'
 import { hsl } from '@dank-inc/sketchy/lib/helpers/color'
@@ -78,17 +78,17 @@ const sketch = create3dSketch(
       const x = u * (bounds[1] - bounds[0]) + bounds[0]
       const z = v * (bounds[3] - bounds[2]) + bounds[2]
       cube.position.set(x, 0, z)
-      // scene.add(cube)
+      scene.add(cube)
       return cube
     })
 
     return ({ time, dt }) => {
-      // box.rotation.y += dt * 0.5
-      // box.position.y = 1 + Math.sin(time) * 1
+      box.rotation.y += dt * 0.5
+      box.position.y = 1 + Math.sin(time) * 1
 
-      // cubes.forEach((cube) => {
-      //   cube.rotation.y += dt * 0.5
-      // })
+      cubes.forEach((cube) => {
+        cube.rotation.y += dt * 0.5
+      })
 
       box.rotation.y += mouse.scrollInertia * 0.0001
       box.rotation.y += dt

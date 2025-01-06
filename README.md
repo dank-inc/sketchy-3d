@@ -15,3 +15,5 @@ why? because I love threejs and I'm lazy!
 ## TODO
 
 - lots of stuff
+- move demo paths to demo tsconfig
+- ad demotsconfig to vite config
