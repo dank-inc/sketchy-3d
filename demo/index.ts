@@ -7,7 +7,13 @@ import {
   useBox,
   useAmbient,
   start3dSketch,
+  useOrthographicCamera,
+  OrthographicCameraBounds,
 } from '@/lib'
+
+import { mapXY } from '@dank-inc/lewps'
+import { hsl } from '@dank-inc/sketchy/lib/helpers/color'
+import {} from '@dank-inc/numbaz'
 
 import { SuperMouse } from '@dank-inc/super-mouse'
 
@@ -20,13 +26,15 @@ const params = createParams({
 
 const sketch = create3dSketch(
   ({ scene, camera, renderer, PI, TAU, container, sin, cos }) => {
+    // Z is UP
+
     const ambient = useAmbient(0xffffff, 0)
     scene.add(ambient)
 
     const light = useLight(0xffffff, 1, [1, 1, 1])
     scene.add(light)
 
-    const box = useMesh(useBox([1, 1, 1]), useStandardMaterial(0xffff00))
+    const box = useMesh(useBox([3, 3, 3]), useStandardMaterial(0xffff00))
     box.position.set(0, 0, 0)
     box.rotation.y = TAU * 0.05
     scene.add(box)
@@ -36,6 +44,15 @@ const sketch = create3dSketch(
     const data = {
       clicked: false,
     }
+
+    scene.remove(camera)
+
+    const bounds: OrthographicCameraBounds = [-5, 5, 5, -5]
+
+    camera = useOrthographicCamera(bounds)
+    camera.position.set(0, 10, 0)
+    camera.lookAt(box.position)
+    scene.add(camera)
 
     const mouse = new SuperMouse({ element: container, scrollScale: 0.001 })
     mouse.onScroll = (e) => {
@@ -52,9 +69,26 @@ const sketch = create3dSketch(
       box.rotation.x += PI * 0.25
     }
 
+    const cubes = mapXY(10, 10, (u, v) => {
+      const cube = useMesh(
+        useBox([1, 1, 1]),
+        useStandardMaterial(hsl(u, 1, 0.5)),
+      )
+
+      const x = u * (bounds[1] - bounds[0]) + bounds[0]
+      const z = v * (bounds[3] - bounds[2]) + bounds[2]
+      cube.position.set(x, 0, z)
+      // scene.add(cube)
+      return cube
+    })
+
     return ({ time, dt }) => {
       // box.rotation.y += dt * 0.5
       // box.position.y = 1 + Math.sin(time) * 1
+
+      // cubes.forEach((cube) => {
+      //   cube.rotation.y += dt * 0.5
+      // })
 
       box.rotation.y += mouse.scrollInertia * 0.0001
       box.rotation.y += dt
